@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 977902304}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Fuel
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,7 +388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977902303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.56, y: 11.13, z: 0}
+  m_LocalPosition: {x: 49.56, y: 12.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -520,23 +520,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1428744548 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2130515319801500876, guid: b9f6d5ca790d4c2419e54025a3b13efd, type: 3}
-  m_PrefabInstance: {fileID: 2037582352}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1428744549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428744548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74249d1c8ebee464584a28e7d7a2393e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2037582352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -605,14 +588,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Landing Pad
       objectReference: {fileID: 0}
-    - target: {fileID: 1136816184261854915, guid: 9b69532bb35c2424686f0483013282d8, type: 3}
-      propertyPath: m_TagString
-      value: Finish
-      objectReference: {fileID: 0}
-    - target: {fileID: 1136816184261854941, guid: 9b69532bb35c2424686f0483013282d8, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d77864421be1f98489c1de77c87486bb, type: 2}
     - target: {fileID: 1136816184261854943, guid: 9b69532bb35c2424686f0483013282d8, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -666,10 +641,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3543316237972418677, guid: 49b29c11558d8414ba80260b8bc51cd8, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8d516a09f86d2494ab836bfcb0892d75, type: 2}
     - target: {fileID: 3543316237972418679, guid: 49b29c11558d8414ba80260b8bc51cd8, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -718,10 +689,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Launch Pad
       objectReference: {fileID: 0}
-    - target: {fileID: 3543316237972418683, guid: 49b29c11558d8414ba80260b8bc51cd8, type: 3}
-      propertyPath: m_TagString
-      value: Friendly
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49b29c11558d8414ba80260b8bc51cd8, type: 3}
 --- !u!1001 &8553145535936140052
@@ -735,14 +702,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle
       objectReference: {fileID: 0}
-    - target: {fileID: 8553145534527400065, guid: d9daea1f16f09bf4b922ff6e5ed9adb9, type: 3}
-      propertyPath: m_TagString
-      value: Obstacle
-      objectReference: {fileID: 0}
-    - target: {fileID: 8553145534527400067, guid: d9daea1f16f09bf4b922ff6e5ed9adb9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 92040159e1c111642b9f45329b0f7055, type: 2}
     - target: {fileID: 8553145534527400077, guid: d9daea1f16f09bf4b922ff6e5ed9adb9, type: 3}
       propertyPath: m_RootOrder
       value: 6

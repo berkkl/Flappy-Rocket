@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class CollisionHandler : MonoBehaviour
 {
@@ -6,11 +8,8 @@ public class CollisionHandler : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
-            case "Friendly":
+            case "Start":
                 Debug.Log("Friendly Object");
-                break;
-            case "Obstacle":
-                Debug.Log("You hit the obstacle!");
                 break;
             case "Fuel":
                 Debug.Log("Fuelled up!");
@@ -26,7 +25,8 @@ public class CollisionHandler : MonoBehaviour
 
     void ReloadScreen()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 
 }
