@@ -6,14 +6,21 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] float thrustPower = 888f;
     [SerializeField] float rotationPower = 100f;
+
     [SerializeField] AudioClip mainAudioEngine;
+
+    [SerializeField] ParticleSystem thrustParticle;
+    [SerializeField] ParticleSystem rightThrustParticle;
+    [SerializeField] ParticleSystem leftThrustParticle;
 
     Rigidbody rb;
     AudioSource audioSource;
+    ParticleSystem particleSystem;
     void Start()
     {
         rb = GetComponent<Rigidbody>();  
         audioSource = GetComponent<AudioSource>();
+        particleSystem = GetComponent<ParticleSystem>();   
     }
     void Update()
     {
@@ -25,6 +32,7 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            thrustParticle.Play();
             if(!audioSource.isPlaying)
             {
                 audioSource.PlayOneShot(mainAudioEngine);
@@ -34,7 +42,6 @@ public class Movement : MonoBehaviour
         else
         {
             audioSource.Stop();
-            Debug.Log("durdu");
         }
     }
     
@@ -42,10 +49,12 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
+            rightThrustParticle.Play();
             applyRotation(rotationPower);
         }
         else if(Input.GetKey(KeyCode.D))
         {
+            leftThrustParticle.Play();
             applyRotation(-rotationPower);
         }   
     }
