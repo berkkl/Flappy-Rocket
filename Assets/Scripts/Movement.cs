@@ -13,9 +13,11 @@ public class Movement : MonoBehaviour
     [SerializeField] ParticleSystem rightThrustParticle;
     [SerializeField] ParticleSystem leftThrustParticle;
 
-    Rigidbody rb;
-    AudioSource audioSource;
-    ParticleSystem particleSystem;
+    private Rigidbody rb;
+    private AudioSource audioSource;
+    private ParticleSystem particleSystem;
+    
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();  
@@ -27,48 +29,80 @@ public class Movement : MonoBehaviour
         ProcessThrust();
         ProcessRotate();
     }
-
+    
     void ProcessThrust()
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            thrustParticle.Play();
-            if(!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(mainAudioEngine);
-            }
-            rb.AddRelativeForce(Vector3.up * thrustPower * Time.deltaTime); 
+            StartThrust();
         }
         else
         {
-            audioSource.Stop();
+            StopThrust();
         }
     }
+    private void StartThrust()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(mainAudioEngine);
+        }
+
+        if (!thrustParticle.isPlaying)
+        {
+            thrustParticle.Play();
+        }
+
+        rb.AddRelativeForce(Vector3.up * (thrustPower * Time.deltaTime));
+    }
     
+    private void StopThrust()
+    {
+        audioSource.Stop();
+        thrustParticle.Stop();
+    }
     void ProcessRotate()
     {
         if (Input.GetKey(KeyCode.A))
         {
-            rightThrustParticle.Play();
-            applyRotation(rotationPower);
+            RotateToRight();
         }
         else if(Input.GetKey(KeyCode.D))
         {
+            RotateToLeft();
+        }
+        else
+        {
+            StopRotating();
+        }
+    }
+
+    private void RotateToRight()
+    {
+        ApplyRotation(rotationPower);
+        if (!rightThrustParticle.isPlaying)
+        {
+            rightThrustParticle.Play();
+        }
+    }
+    private void RotateToLeft()
+    {
+        ApplyRotation(-rotationPower);
+        if (!leftThrustParticle.isPlaying)
+        {
             leftThrustParticle.Play();
-            applyRotation(-rotationPower);
-        }   
+        }
     }
-        void applyRotation(float rotationFrame)
+    
+    private void StopRotating()
     {
-        transform.Rotate(Vector3.forward * rotationFrame * Time.deltaTime);
-        rb.AddForce(Vector3.forward * rotationFrame * Time.deltaTime);
+        leftThrustParticle.Stop();
+        rightThrustParticle.Stop();
     }
-
-    private void ApplyRotation(float rotationThisFrame)
+    
+    private void ApplyRotation(float rotationFrame)
     {
-        rb.freezeRotation = true;
-        transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
-        rb.freezeRotation = false;
+        transform.Rotate(Vector3.forward * (rotationFrame * Time.deltaTime));
+        rb.AddForce(Vector3.forward * (rotationFrame * Time.deltaTime));
     }
-
 }
